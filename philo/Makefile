@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 01:37:10 by haseo             #+#    #+#              #
-#    Updated: 2021/11/03 01:44:33 by haseo            ###   ########.fr        #
+#    Updated: 2021/11/05 21:39:43 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			= philo
 # Compile flag
 # ----------------------------------
 CC				= gcc
-CFLAGS 			= -Wall -Wextra -Werror
+# CFLAGS 			= -Wall -Wextra -Werror
 # CFLAGS			+= -g3 -fsanitize=address
 # CFLAGS			+= -g
 

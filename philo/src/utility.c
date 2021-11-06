@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 23:19:47 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/01 18:37:50 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/05 21:29:43 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,19 +98,21 @@ int	ft_perror(const char *s, int errno)
 	return (errno);
 }
 
-int	get_msec(int *msec)
+int	get_msec(long int *msec)
 {
 	struct timeval	tv;
 
 	if (gettimeofday(&tv, NULL) == -1)
 		return (ft_perror("[Error] gettimeofday\n", -1));
 	*msec = tv.tv_sec * 1000 + tv.tv_usec / 1000;
+
+	//printf("%ld %ld\n", tv.tv_sec, tv.tv_usec);
 	return (0);
 }
 
-int	thread_msleep(int msec, int time_start)
+int	thread_msleep(long int msec, long int time_start)
 {
-	int time;
+	long int time;
 
 	while (1)
 	{

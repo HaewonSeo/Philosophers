@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 22:38:21 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/03 01:39:20 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/06 00:15:18 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,62 +30,55 @@ typedef enum e_state
 {
 	THINKING,
 	EATING,
-	SLEEPING
+	SLEEPING,
 }			t_state;
-/*
-typedef struct s_philo
+
+typedef enum e_fork
 {
-	pthread_t			tid;
-	t_state				state;
-	pthread_mutex_t		mutex;
-	int					left;
-	int					right;
-}						t_philo;
+	USABLE,
+	UNUSABLE
+}			t_fork;
 
 typedef struct s_info
 {
-	int					num_philo;
+	int					num_philo;	// 1인 경우는?
 	int					time_die;
 	int					time_eat;
 	int					time_sleep;
 	int					num_must_eat;
-	int					time_start;
-	pthread_mutex_t		mutex_test;
-	int					cur;
-	t_philo				*philo;
+	int					num_end_dine;
+	long int			time_start;
 }						t_info;
-*/
 
-typedef struct s_info
+typedef struct s_mutex
 {
-	int					num_philo;
-	int					time_die;
-	int					time_eat;
-	int					time_sleep;
-	int					num_must_eat;
-	int					time_start;
-}						t_info;
+	pthread_mutex_t		check;
+	pthread_mutex_t		simulation;
+	pthread_mutex_t		*philo;
+	pthread_mutex_t		*monitor;
+}						t_mutex;
 
 typedef struct s_philo
 {
-	pthread_t			tid;
+	pthread_t			tid_dine;
+	pthread_t			tid_monitor;
 	int					id;
 	int					left;
 	int					right;
+	int					eat;
+	long int			time_last_dine;
 	t_info				*info;
-	pthread_mutex_t		*check;
-	pthread_mutex_t		*philo;
-	pthread_mutex_t		*monitor;
-	t_state				*state;
+	t_mutex				*mutex;
+	t_fork				*fork;
 }						t_philo;
 
 void					*ft_calloc(size_t num, size_t size);
 int						arg_to_int(char *arg);
 int						ft_perror(const char *str, int errno);
-int						get_msec(int *msec);
-int						thread_msleep(int msec, int time_start);
+int						get_msec(long int *msec);
+int						thread_msleep(long int msec, long int time_start);
 
-void					check(int i, t_philo *ph);
+int						check(int i, t_philo *ph);
 int						pickup(t_philo *ph);
 int						eating(t_philo *ph);
 int						putdown(t_philo *ph);
