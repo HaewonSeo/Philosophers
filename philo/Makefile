@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 01:37:10 by haseo             #+#    #+#              #
-#    Updated: 2021/11/05 21:39:43 by haseo            ###   ########.fr        #
+#    Updated: 2021/11/07 23:19:08 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ NAME			= philo
 # Compile flag
 # ----------------------------------
 CC				= gcc
-# CFLAGS 			= -Wall -Wextra -Werror
+CFLAGS 			= -Wall -Wextra -Werror
 # CFLAGS			+= -g3 -fsanitize=address
 # CFLAGS			+= -g
 
@@ -58,7 +58,9 @@ WHITE			= \033[1;37m
 INC_DIR			=	./inc
 SRC_DIR			=	./src
 OBJ_DIR			=	./obj
-VPATH_DIR		=	./src
+VPATH_DIR		=	./src \
+					./src/thread \
+					./src/utility \
 
 vpath %.c $(VPATH_DIR)
 
@@ -67,8 +69,12 @@ vpath %.c $(VPATH_DIR)
 # ----------------------------------
 
 SRCS			=	philo.c \
+					thread.c \
 					state.c \
-					utility.c
+					time.c \
+					argtoi.c \
+					ft_calloc.c \
+					ft_perror.c \
 
 OBJS			= $(addprefix $(OBJ_DIR)/, ${SRCS:.c=.o})
 
