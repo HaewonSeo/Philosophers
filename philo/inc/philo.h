@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 22:38:21 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/07 23:17:51 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/09 14:32:39 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@
 
 typedef enum e_state
 {
+	HUNGRY,
 	THINKING,
 	EATING,
 	SLEEPING,
@@ -50,12 +51,12 @@ typedef enum e_fork
 
 typedef struct s_info
 {
-	int					num_philo;
+	int					nr_philos;
 	int					time_die;
 	int					time_eat;
 	int					time_sleep;
-	int					num_must_eat;
-	int					num_end_dine;
+	int					nr_must_eat;
+	int					nr_end_dine;
 	long int			time_start;
 }						t_info;
 
@@ -73,12 +74,14 @@ typedef struct s_philo
 	int					id;
 	int					left;
 	int					right;
-	int					num_dine;
+	t_state				state;
+	int					nr_dininig;
 	long int			time;
 	long int			time_last_dine;
 	t_info				*info;
 	t_mutex				*mutex;
 	t_fork				*fork;
+	int					filp;
 }						t_philo;
 
 
