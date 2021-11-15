@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 01:37:10 by haseo             #+#    #+#              #
-#    Updated: 2021/11/07 23:19:08 by haseo            ###   ########.fr        #
+#    Updated: 2021/11/15 15:19:44 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME			= philo
 # ----------------------------------
 # Compile flag
 # ----------------------------------
+
 CC				= gcc
 CFLAGS 			= -Wall -Wextra -Werror
 # CFLAGS			+= -g3 -fsanitize=address
@@ -72,9 +73,9 @@ SRCS			=	philo.c \
 					thread.c \
 					state.c \
 					time.c \
-					argtoi.c \
+					print.c \
+					ft_atoi.c \
 					ft_calloc.c \
-					ft_perror.c \
 
 OBJS			= $(addprefix $(OBJ_DIR)/, ${SRCS:.c=.o})
 
@@ -82,8 +83,6 @@ OBJS			= $(addprefix $(OBJ_DIR)/, ${SRCS:.c=.o})
 # Library
 # ----------------------------------
 
-# LIBFT			= $(LIBFT_DIR)/libft.a
-# LIB				= -lft
 LDFLAGS			= -lpthread
 
 # ----------------------------------
@@ -107,12 +106,10 @@ $(NAME):		$(OBJ_DIR) ${OBJS}
 clean:
 					@$(RM) $(OBJS)
 					@$(RMDIR) $(OBJ_DIR)
-					@$(ECHO) "$(GREEN)[Success]\t $(RED)Remove $(NAME)/$(OBJ_DIR)$(NOCOLOR)"
+					@$(ECHO) "$(GREEN)[Success]\t $(RED)Remove $(OBJ_DIR)$(NOCOLOR)"
 
 fclean:			clean
 					@$(RM) $(NAME)
 					@$(ECHO) "$(GREEN)[Success]\t $(RED)Remove $(NAME)$(NOCOLOR)"
 
 re:				fclean all
-
-#.PHONY: 		all bonus clean fclean re  $(NAME) $(SERVER) $(CLIENT)
