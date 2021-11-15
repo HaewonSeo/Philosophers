@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 17:07:04 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/15 16:22:41 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/16 00:02:47 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,8 +93,8 @@ time_to_eat time_to_sleep [number_of_times_each_philosopher_must_eat]\n", 0));
 		return (ft_perror("[Error] ft_calloc() ph\n", 0));
 	if (init_philo(ph, &info, &mutex) == -1)
 		return (ft_perror("[Error] init_philo()\n", 0));
-	if (threading(ph) == -1)
-		return (ft_perror("[Error] threading()\n", 0));
+	if (simulation(ph) == -1)
+		return (ft_perror("[Error] simulation()\n", 0));
 	free_all(ph);
 	return (0);
 }

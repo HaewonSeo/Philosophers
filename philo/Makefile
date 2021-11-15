@@ -6,7 +6,7 @@
 #    By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/12 01:37:10 by haseo             #+#    #+#              #
-#    Updated: 2021/11/15 15:19:44 by haseo            ###   ########.fr        #
+#    Updated: 2021/11/16 00:09:19 by haseo            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,7 +60,7 @@ INC_DIR			=	./inc
 SRC_DIR			=	./src
 OBJ_DIR			=	./obj
 VPATH_DIR		=	./src \
-					./src/thread \
+					./src/simulation \
 					./src/utility \
 
 vpath %.c $(VPATH_DIR)
@@ -70,7 +70,7 @@ vpath %.c $(VPATH_DIR)
 # ----------------------------------
 
 SRCS			=	philo.c \
-					thread.c \
+					simulation.c \
 					state.c \
 					time.c \
 					print.c \

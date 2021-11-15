@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   thread.c                                           :+:      :+:    :+:   */
+/*   simulation.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 23:06:25 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/15 16:15:30 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/16 00:08:12 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ static void	*monitor(void *arg)
 	return (NULL);
 }
 
-int	threading(t_philo *ph)
+int	simulation(t_philo *ph)
 {
 	int	i;
 
@@ -74,11 +74,11 @@ int	threading(t_philo *ph)
 		if (pthread_create(&ph[i].tid_dine, NULL, dine, (void *)&ph[i]))
 			return (ft_perror("[Error] pthread_create(dine)\n", -1));
 		if (pthread_detach(ph[i].tid_dine))
-			return (ft_perror("[Error] pthread_join(dine)\n", -1));
+			return (ft_perror("[Error] pthread_detach(dine)\n", -1));
 		if (pthread_create(&ph[i].tid_monitor, NULL, monitor, (void *)&ph[i]))
 			return (ft_perror("[Error] pthread_create(monitor)\n", -1));
 		if (pthread_detach(ph[i].tid_monitor))
-			return (ft_perror("[Error] pthread_join(monitor)\n", -1));
+			return (ft_perror("[Error] pthread_detach(monitor)\n", -1));
 	}
 	if (pthread_mutex_lock(&ph->mutex->simulation))
 		return (ft_perror("[Error] pthread_mutex_lock(simulation)\n", -1));

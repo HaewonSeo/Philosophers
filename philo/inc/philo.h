@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/28 22:38:21 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/15 16:23:07 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/16 00:02:31 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,10 @@ typedef struct s_philo
 }						t_philo;
 
 /*
-** Thread
+** Simulation
 */
 
-int						threading(t_philo *ph);
+int						simulation(t_philo *ph);
 int						pickup(t_philo *ph);
 int						eating(t_philo *ph);
 int						putdown(t_philo *ph);

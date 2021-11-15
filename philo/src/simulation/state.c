@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/29 15:09:30 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/15 16:16:55 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/15 22:05:21 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,6 @@ int	eating(t_philo *ph)
 		return (ft_perror("[Error] get_msec()\n", -1));
 	if (thread_msleep(ph->info->time_eat, ph->time_last_dine) == -1)
 		return (ft_perror("[Error] thread_msleep()\n", -1));
-	return (0);
-}
-
-int	putdown(t_philo *ph)
-{
-	if (pthread_mutex_unlock(&ph->mutex->fork[ph->l]))
-		return (ft_perror("[Error] pthread_mutex_unlock(fork[l])\n", -1));
-	if (pthread_mutex_unlock(&ph->mutex->fork[ph->r]))
-		return (ft_perror("[Error] pthread_mutex_unlock(fork[r])\n", -1));
 	++(ph->nr_dininig);
 	if (ph->nr_dininig == ph->info->nr_must_eat)
 		++(ph->info->nr_end_dine);
@@ -56,6 +47,15 @@ int	putdown(t_philo *ph)
 		}
 		return (-1);
 	}
+	return (0);
+}
+
+int	putdown(t_philo *ph)
+{
+	if (pthread_mutex_unlock(&ph->mutex->fork[ph->l]))
+		return (ft_perror("[Error] pthread_mutex_unlock(fork[l])\n", -1));
+	if (pthread_mutex_unlock(&ph->mutex->fork[ph->r]))
+		return (ft_perror("[Error] pthread_mutex_unlock(fork[r])\n", -1));
 	return (0);
 }
 
