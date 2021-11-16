@@ -6,7 +6,7 @@
 /*   By: haseo <haseo@student.42seoul.kr>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 23:06:25 by haseo             #+#    #+#             */
-/*   Updated: 2021/11/16 00:08:12 by haseo            ###   ########.fr       */
+/*   Updated: 2021/11/16 13:58:16 by haseo            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static void	*monitor(void *arg)
 			ft_perror("[Error] get_msec()\n", -1);
 		if (ph->time - ph->time_last_dine > (long int)ph->info->time_die)
 			break ;
-		if (thread_msleep(20, ph->time) == -1)
+		if (thread_msleep(10, ph->time) == -1)
 			ft_perror("[Error] thread_msleep()\n", -1);
 	}
 	if (print_state(ph, DIED))
